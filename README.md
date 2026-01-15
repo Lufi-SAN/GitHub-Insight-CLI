@@ -1,2 +1,8 @@
-# GitHub-User-Activity-API
-A CLI to fetch the recent activity of a GitHub user and display it in the terminal
+# GitHub-Insight-CLI
+Why this tool exists
+
+API limitations & tradeoffs
+
+Caching strategy
+
+What you’d add with more time
