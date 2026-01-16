@@ -12,7 +12,7 @@ program
   .command("ping")
   .description("Check CLI is working")
   .action(() => {
-    console.log("gh-insight is alive 🚀");
+    console.log(chalk.greenBright("gh-insight is alive 🚀"));
   });
   
 program.parse(process.argv);
