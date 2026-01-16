@@ -1,10 +1,15 @@
 {
   "name": "github-insight-cli",
+  "bin": {
+    "gh-insight": "./dist/index.js"
+  },
   "version": "1.0.0",
   "description": "A CLI tool that analyzes GitHub users or repos and gives actionable insights, not just raw data.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
   },
   "repository": {
     "type": "git",
