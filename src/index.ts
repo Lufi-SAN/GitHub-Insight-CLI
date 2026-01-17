@@ -1,6 +1,9 @@
 #!/usr/bin/env node
 import chalk from 'chalk';
 import { Command } from 'commander';
+import { ensureDirectory } from './ensureDirectory.js';
+
+ensureDirectory();
 const program = new Command();
 
 program
