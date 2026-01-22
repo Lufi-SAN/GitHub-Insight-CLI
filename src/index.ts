@@ -2,7 +2,6 @@
 import chalk from 'chalk';
 import { Command } from 'commander';
 import prompts from 'prompts'
-import checkPATValidity from './utils/checkPATValidity.js';
 
 const program = new Command();
 
