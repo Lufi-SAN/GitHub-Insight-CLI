@@ -1,6 +1,7 @@
 import GitHubClient from "./client.js"
 import type { GitHubUser } from "./types.js"
 import { authEndpoints } from "./endpoints.js"
+import {networkError} from "../utils/customErrors.js";
 
 export async function authClient(PAT?: string) {
     const client = new GitHubClient(PAT);
@@ -19,6 +20,9 @@ export async function authClient(PAT?: string) {
         })
         return tokenJSON
     } catch (error) {
-        throw error;
+        if (error instanceof networkError) {
+            throw error
+        }
+        throw new Error("Failed to fetch" + error);
     }
 }
