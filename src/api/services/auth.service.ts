@@ -5,10 +5,8 @@ export default async function checkPATValidity(token: string) {
     try {
         const tokenData = await authClient(token);
         await storeAuth(tokenData);
-        console.log("Authentication successful! Token data:");
-        console.log(tokenData);
+        
     } catch (error) {
-        console.error("Authentication failed:", error instanceof Error ? error.message : error);
-        process.exit(1);
+        throw new Error("Invalid token or unable to authenticate.");
     }
 }

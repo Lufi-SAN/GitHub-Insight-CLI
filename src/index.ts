@@ -2,6 +2,7 @@
 import chalk from 'chalk';
 import { Command } from 'commander';
 import prompts from 'prompts'
+import authLoginCommand from './commands/authLogin.command.js';
 
 const program = new Command();
 
@@ -26,39 +27,9 @@ program
       .description('Authenticate with GitHub using a Personal Access Token')
       .action( async (options) => {
                 let token : string = options.token;//extract token option from option object
-
-                if(token) {//if token present
-                  await checkPATValidity(token)
-                  return;
-                }
-
-                if (!token) {//Interactive prompt for token if typeof token === "undefined"
-                  const response = await prompts({
-                  type: 'invisible',
-                  name: 'token',
-                  message: `To use gh-insight, you need a GitHub Personal Access Token.
-
-Scopes required:
-- read:user
-- public_repo
-
-Create one here:
-https://github.com/settings/tokens
-
-Paste your token below (input hidden):`
-                  });
-                  token = response.token;
-                }
-
-                if (!token) {//error & 
-                  console.error(chalk.redBright("No token provided. Aborting login."));
-                  process.exit(1);
-                }
-
-                await checkPATValidity(token)
-                return;
-              })
-  )
+                await authLoginCommand(token);
+      })
+  );
   // .addCommand(
   //   new Command('logout')
   //     .description('Logout from GitHub by removing stored token')
